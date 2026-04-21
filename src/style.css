@@ -434,8 +434,8 @@ body::before {
   grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.95fr);
   gap: 56px;
   align-items: center;
-  min-height: calc(100vh - 120px);
-  padding: 56px 0 28px;
+  min-height: calc(100vh - 180px);
+  padding: 24px 0 28px;
 }
 
 .hero-copy,
