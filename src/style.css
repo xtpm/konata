@@ -442,7 +442,7 @@ body::before {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(460px, 1.18fr);
-  gap: 44px;
+  gap: 84px;
   align-items: center;
   min-height: calc(100vh - 240px);
   padding: 4px 0 28px;
