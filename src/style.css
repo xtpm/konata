@@ -451,6 +451,8 @@ body::before {
 .hero-copy,
 .hero-showcase {
   min-width: 0;
+  justify-self: end;
+  transform: translateX(28px);
 }
 
 .hero-copy {
@@ -668,6 +670,11 @@ body::before {
     gap: 28px;
     min-height: auto;
     padding-top: 28px;
+  }
+
+  .hero-showcase {
+    justify-self: stretch;
+    transform: none;
   }
 
   .showcase-grid {
