@@ -33,7 +33,7 @@ body {
     radial-gradient(circle at 82% 20%, rgba(124, 61, 255, 0.18), transparent 22%),
     linear-gradient(180deg, #0b0614 0%, #07040d 46%, #0a0612 100%);
   color: var(--text);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 body::before {
@@ -143,7 +143,7 @@ body::before {
 }
 
 .intro__nav .mark {
-  font-family: "Syne", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.16em;
   color: var(--text);
@@ -164,7 +164,7 @@ body::before {
   position: absolute;
   left: clamp(18px, 4vw, 56px);
   right: clamp(18px, 4vw, 56px);
-  font-family: "Syne", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(94px, 24vw, 360px);
   font-weight: 800;
   line-height: 0.88;
@@ -374,7 +374,7 @@ body::before {
 .feature-card h3,
 .collective-card h3,
 .end-panel h3 {
-  font-family: "Syne", sans-serif;
+  font-family: "Sora", sans-serif;
 }
 
 .brand-mark {
