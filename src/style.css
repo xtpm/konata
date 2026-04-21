@@ -457,6 +457,8 @@ body::before {
 
 .hero-copy {
   max-width: 540px;
+  justify-self: end;
+  transform: translateX(120px);
 }
 
 .hero-title {
@@ -670,6 +672,11 @@ body::before {
     gap: 28px;
     min-height: auto;
     padding-top: 28px;
+  }
+
+  .hero-copy {
+    justify-self: stretch;
+    transform: none;
   }
 
   .hero-showcase {
