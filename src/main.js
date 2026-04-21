@@ -3,8 +3,6 @@ import gsap from "gsap";
 
 const pointerRing = document.querySelector(".cursor-ring");
 const revealItems = document.querySelectorAll(".reveal");
-const radar = document.querySelector(".radar-frame");
-const targets = document.querySelectorAll(".target");
 const intro = document.getElementById("intro");
 
 if (intro) {
@@ -190,50 +188,6 @@ gsap.to(".ticker-track", {
   duration: 18,
   ease: "none",
 });
-
-gsap.to(".scanline", {
-  rotate: 360,
-  repeat: -1,
-  duration: 7,
-  ease: "none",
-  transformOrigin: "50% 50%",
-});
-
-gsap.to(".ring", {
-  scale: 1.06,
-  opacity: 0.35,
-  repeat: -1,
-  yoyo: true,
-  duration: 2.4,
-  stagger: 0.3,
-  ease: "sine.inOut",
-});
-
-targets.forEach((target, index) => {
-  gsap.to(target, {
-    x: `random(-18, 18, 1)`,
-    y: `random(-18, 18, 1)`,
-    repeat: -1,
-    yoyo: true,
-    duration: 2 + index * 0.45,
-    ease: "sine.inOut",
-  });
-});
-
-if (radar) {
-  window.addEventListener("pointermove", (event) => {
-    const { innerWidth, innerHeight } = window;
-    const rotateY = ((event.clientX / innerWidth) - 0.5) * 10;
-    const rotateX = (((event.clientY / innerHeight) - 0.5) * -1) * 10;
-
-    gsap.to(radar, {
-      rotateX,
-      rotateY,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  });
-}
 
 gsap.from(".hero-title", {
   y: 42,

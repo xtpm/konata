@@ -442,12 +442,9 @@ body::before {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: 44px;
-  align-items: center;
+  display: block;
   min-height: calc(100vh - 120px);
-  padding: 56px 0 24px;
+  padding: 72px 0 32px;
 }
 
 .hero-copy,
@@ -456,7 +453,7 @@ body::before {
 }
 
 .hero-copy {
-  max-width: 560px;
+  max-width: 720px;
 }
 
 .hero-title {
@@ -493,7 +490,7 @@ body::before {
 }
 
 .hero-body {
-  max-width: 46ch;
+  max-width: 42ch;
   margin-bottom: 28px;
 }
 
@@ -541,177 +538,6 @@ body::before {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.hero-stage {
-  display: grid;
-  gap: 22px;
-  width: min(100%, 620px);
-  justify-self: end;
-}
-
-.radar-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 36px;
-  border: 1px solid var(--line);
-  background:
-    radial-gradient(circle at center, rgba(182, 92, 255, 0.22), transparent 28%),
-    radial-gradient(circle at 50% 50%, rgba(88, 0, 255, 0.18), transparent 54%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.01));
-  overflow: hidden;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
-    0 24px 80px rgba(0, 0, 0, 0.46);
-  transform-style: preserve-3d;
-}
-
-.radar-core,
-.ring,
-.scanline {
-  position: absolute;
-  inset: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.radar-core {
-  width: 18%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(246, 204, 255, 0.95), rgba(182, 92, 255, 0.08));
-  filter: blur(10px);
-  opacity: 0.82;
-}
-
-.ring {
-  border: 1px solid rgba(190, 145, 255, 0.34);
-  border-radius: 50%;
-}
-
-.ring-1 {
-  width: 28%;
-  aspect-ratio: 1 / 1;
-}
-
-.ring-2 {
-  width: 52%;
-  aspect-ratio: 1 / 1;
-}
-
-.ring-3 {
-  width: 78%;
-  aspect-ratio: 1 / 1;
-}
-
-.scanline {
-  width: 58%;
-  height: 1px;
-  transform-origin: left center;
-  background: linear-gradient(90deg, rgba(182, 92, 255, 0.04), rgba(226, 186, 255, 0.95));
-  box-shadow: 0 0 24px rgba(182, 92, 255, 0.55);
-}
-
-.target {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border: 1px solid rgba(246, 241, 255, 0.52);
-  border-radius: 50%;
-  box-shadow: 0 0 0 8px rgba(182, 92, 255, 0.08);
-}
-
-.target::before,
-.target::after {
-  content: "";
-  position: absolute;
-  background: rgba(246, 241, 255, 0.45);
-}
-
-.target::before {
-  top: 50%;
-  left: -8px;
-  right: -8px;
-  height: 1px;
-  transform: translateY(-50%);
-}
-
-.target::after {
-  left: 50%;
-  top: -8px;
-  bottom: -8px;
-  width: 1px;
-  transform: translateX(-50%);
-}
-
-.target-a {
-  top: 22%;
-  left: 68%;
-}
-
-.target-b {
-  top: 58%;
-  left: 26%;
-}
-
-.target-c {
-  top: 72%;
-  left: 70%;
-}
-
-.stage-label {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.stage-axis {
-  position: absolute;
-  background: rgba(200, 170, 255, 0.16);
-}
-
-.axis-x {
-  left: 12%;
-  right: 12%;
-  top: 50%;
-  height: 1px;
-}
-
-.axis-y {
-  top: 12%;
-  bottom: 12%;
-  left: 50%;
-  width: 1px;
-}
-
-.stage-readout {
-  position: absolute;
-  color: rgba(246, 241, 255, 0.58);
-  font-size: 0.66rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.readout-a {
-  top: 18%;
-  left: 14%;
-}
-
-.readout-b {
-  right: 12%;
-  top: 58%;
-}
-
-.readout-c {
-  left: 20%;
-  bottom: 16%;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  width: 100%;
-}
-
 .stat-card,
 .feature-card,
 .routine-panel,
@@ -723,24 +549,6 @@ body::before {
   backdrop-filter: blur(18px);
   border: 1px solid var(--line);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.stat-card {
-  min-height: 104px;
-  border-radius: 20px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(180deg, rgba(29, 16, 46, 0.72), rgba(12, 8, 18, 0.72));
-}
-
-.stat-card strong {
-  font-size: 1rem;
-  line-height: 1.25;
-  max-width: 12ch;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 .section-grid {
@@ -862,8 +670,7 @@ body::before {
 @media (max-width: 980px) {
   .hero,
   .cards,
-  .collective-grid,
-  .hero-stats {
+  .collective-grid {
     grid-template-columns: 1fr;
   }
 
@@ -888,10 +695,6 @@ body::before {
     padding-top: 28px;
   }
 
-  .hero-stage {
-    justify-self: start;
-    width: min(100%, 560px);
-  }
 }
 
 @media (max-width: 720px) {
@@ -922,7 +725,6 @@ body::before {
 
   .feature-card,
   .collective-card,
-  .stat-card,
   .end-panel {
     border-radius: 22px;
   }
