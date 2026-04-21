@@ -4,6 +4,7 @@ import gsap from "gsap";
 const pointerRing = document.querySelector(".cursor-ring");
 const revealItems = document.querySelectorAll(".reveal");
 const intro = document.getElementById("intro");
+const particleCanvas = document.querySelector(".particle-field");
 
 if (intro) {
   const countEl = document.getElementById("introCount");
@@ -154,6 +155,92 @@ window.addEventListener("pointermove", (event) => {
     ease: "power2.out",
   });
 });
+
+if (particleCanvas instanceof HTMLCanvasElement) {
+  const context = particleCanvas.getContext("2d");
+  const particles = [];
+  const pointer = {
+    x: window.innerWidth * 0.5,
+    y: window.innerHeight * 0.5,
+    radius: 180,
+  };
+
+  const setCanvasSize = () => {
+    const dpr = window.devicePixelRatio || 1;
+    particleCanvas.width = window.innerWidth * dpr;
+    particleCanvas.height = window.innerHeight * dpr;
+    particleCanvas.style.width = `${window.innerWidth}px`;
+    particleCanvas.style.height = `${window.innerHeight}px`;
+    context?.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const createParticles = () => {
+    particles.length = 0;
+    const count = Math.max(40, Math.floor(window.innerWidth / 24));
+
+    for (let index = 0; index < count; index += 1) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.16,
+        vy: (Math.random() - 0.5) * 0.16,
+        size: Math.random() * 1.8 + 0.8,
+      });
+    }
+  };
+
+  const renderParticles = () => {
+    if (!context) return;
+
+    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    particles.forEach((particle) => {
+      const dx = pointer.x - particle.x;
+      const dy = pointer.y - particle.y;
+      const distance = Math.hypot(dx, dy);
+
+      if (distance < pointer.radius) {
+        const force = (pointer.radius - distance) / pointer.radius;
+        const angle = Math.atan2(dy, dx);
+        particle.vx -= Math.cos(angle) * force * 0.035;
+        particle.vy -= Math.sin(angle) * force * 0.035;
+      }
+
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vx *= 0.985;
+      particle.vy *= 0.985;
+
+      if (particle.x < -20) particle.x = window.innerWidth + 20;
+      if (particle.x > window.innerWidth + 20) particle.x = -20;
+      if (particle.y < -20) particle.y = window.innerHeight + 20;
+      if (particle.y > window.innerHeight + 20) particle.y = -20;
+
+      context.beginPath();
+      context.fillStyle = "rgba(210, 180, 255, 0.34)";
+      context.shadowColor = "rgba(145, 76, 255, 0.25)";
+      context.shadowBlur = 12;
+      context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      context.fill();
+    });
+
+    requestAnimationFrame(renderParticles);
+  };
+
+  setCanvasSize();
+  createParticles();
+  renderParticles();
+
+  window.addEventListener("resize", () => {
+    setCanvasSize();
+    createParticles();
+  });
+
+  window.addEventListener("pointermove", (event) => {
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
+  });
+}
 
 gsap.set(revealItems, {
   y: 36,
